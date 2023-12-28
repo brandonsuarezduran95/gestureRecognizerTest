@@ -13,9 +13,6 @@ class ViewController: UIViewController {
     let toggleSwitch = UISwitch()
     
     let indicationLabel = UILabel()
-    
-    var didTapSquare = true
-    var didSwipeRectangle = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,12 +102,6 @@ class ViewController: UIViewController {
         print("Square Double Tapped")
     }
     
-    @objc func didSwipeRectangle(_ gesture: UISwipeGestureRecognizer) {
-//        guard let view = gesture.view else { return }
-        
-        print("Rectangle Swiped")
-    }
-    
     func setupController() {
         view.backgroundColor = .white
         title = "Tap Gesture"
@@ -125,28 +116,10 @@ class ViewController: UIViewController {
     }
     
     @objc func didTapAddButton() {
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = UIColor.systemYellow
-        viewController.navigationController?.title = "Swipe Gesture"
-        viewController.navigationController?.navigationBar.prefersLargeTitles = true
-        
-        let rectangle = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 150))
-        rectangle.backgroundColor = .systemBlue
-        rectangle.layer.cornerRadius = 10
-        
-        viewController.view.addSubview(rectangle)
-        rectangle.center = viewController.view.center
-        
-        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeRectangle(_ :)))
-        swipeGesture.direction = .right
-        swipeGesture.numberOfTouchesRequired = 1
-        
-        rectangle.isUserInteractionEnabled = true
-        rectangle.addGestureRecognizer(swipeGesture)
+        let viewController = LongPressGestureViewController()
         
         navigationController?.pushViewController(viewController, animated: true)
     }
-
 }
 
 

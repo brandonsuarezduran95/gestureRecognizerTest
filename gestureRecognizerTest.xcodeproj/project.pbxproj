@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		99463B602B3C794C00FFD1D6 /* PanGestureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99463B5F2B3C794C00FFD1D6 /* PanGestureViewController.swift */; };
+		994F1AC22ADDD6F000C5F2A6 /* LongPressGestureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994F1AC12ADDD6F000C5F2A6 /* LongPressGestureViewController.swift */; };
+		994F1AE62AEB07F100C5F2A6 /* PinchGestureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994F1AE52AEB07F100C5F2A6 /* PinchGestureViewController.swift */; };
 		99526E312AC9FE00005A3153 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99526E302AC9FE00005A3153 /* AppDelegate.swift */; };
 		99526E332AC9FE00005A3153 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99526E322AC9FE00005A3153 /* SceneDelegate.swift */; };
 		99526E352AC9FE00005A3153 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99526E342AC9FE00005A3153 /* ViewController.swift */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		99463B5F2B3C794C00FFD1D6 /* PanGestureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanGestureViewController.swift; sourceTree = "<group>"; };
+		994F1AC12ADDD6F000C5F2A6 /* LongPressGestureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressGestureViewController.swift; sourceTree = "<group>"; };
+		994F1AE52AEB07F100C5F2A6 /* PinchGestureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchGestureViewController.swift; sourceTree = "<group>"; };
 		99526E2D2AC9FE00005A3153 /* gestureRecognizerTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gestureRecognizerTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99526E302AC9FE00005A3153 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99526E322AC9FE00005A3153 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,9 +62,12 @@
 		99526E2F2AC9FE00005A3153 /* gestureRecognizerTest */ = {
 			isa = PBXGroup;
 			children = (
+				994F1AE52AEB07F100C5F2A6 /* PinchGestureViewController.swift */,
 				99526E302AC9FE00005A3153 /* AppDelegate.swift */,
 				99526E322AC9FE00005A3153 /* SceneDelegate.swift */,
 				99526E342AC9FE00005A3153 /* ViewController.swift */,
+				994F1AC12ADDD6F000C5F2A6 /* LongPressGestureViewController.swift */,
+				99463B5F2B3C794C00FFD1D6 /* PanGestureViewController.swift */,
 				99526E362AC9FE00005A3153 /* Main.storyboard */,
 				99526E392AC9FE02005A3153 /* Assets.xcassets */,
 				99526E3B2AC9FE02005A3153 /* LaunchScreen.storyboard */,
@@ -139,7 +148,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				99526E352AC9FE00005A3153 /* ViewController.swift in Sources */,
+				994F1AE62AEB07F100C5F2A6 /* PinchGestureViewController.swift in Sources */,
 				99526E312AC9FE00005A3153 /* AppDelegate.swift in Sources */,
+				994F1AC22ADDD6F000C5F2A6 /* LongPressGestureViewController.swift in Sources */,
+				99463B602B3C794C00FFD1D6 /* PanGestureViewController.swift in Sources */,
 				99526E332AC9FE00005A3153 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,8 +305,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -324,8 +335,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
