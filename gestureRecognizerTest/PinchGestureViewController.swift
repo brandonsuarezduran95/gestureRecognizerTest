@@ -12,6 +12,7 @@ class PinchGestureViewController: UIViewController {
     let square = UIView()
     let indicationLabel = UILabel()
     let resetButton = UIButton()
+    var scale: CGFloat = 0.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,21 +48,11 @@ extension PinchGestureViewController {
     
     @objc func scalePiece(_ gestureRecognizer: UIPinchGestureRecognizer) {
         guard gestureRecognizer.view != nil else { return }
+        
         if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
-            let scale: CGFloat = {
-                if gestureRecognizer.scale > 1.5 {
-                    return 1.5
-                } else if gestureRecognizer.scale < 0.5 {
-                    return 0.3
-                }
-                
-                return gestureRecognizer.scale
-                
-            }()
-             
-            print("The current Scale is:",scale)
-            gestureRecognizer.view?.frame = CGRect(x: 0, y: 0, width: 200 * scale, height: 200 * scale)
-            gestureRecognizer.view?.center = view.center
+            scale = gestureRecognizer.scale
+            gestureRecognizer.view?.transform = (gestureRecognizer.view?.transform.scaledBy(x: gestureRecognizer.scale, y: gestureRecognizer.scale))!
+            gestureRecognizer.scale = 1.0
         }
     }
     
@@ -119,7 +110,7 @@ extension PinchGestureViewController {
         
         // Square Reset Animation
         UIView.animate(withDuration: 1.0) { [unowned self] in
-            square.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
+            square.transform = CGAffineTransform.identity.scaledBy(x: scale, y: scale)
             square.center = view.center
             square.layer.cornerRadius = 10
         }
@@ -133,7 +124,6 @@ extension PinchGestureViewController {
     
     @objc func didTapAddButton() {
         let viewController = PanGestureViewController()
-        
         navigationController?.pushViewController(viewController, animated: true)
     }
     

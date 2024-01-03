@@ -27,7 +27,7 @@ class PanGestureViewController: UIViewController {
         setupSquareView()
         setupLabel()
         setupButton()
-        
+        setupAddButton()
     }
 
 }
@@ -58,6 +58,7 @@ extension PanGestureViewController {
         
         if gestureRecognizer.state != .cancelled {
             let newCenter = CGPoint(x: initialCenter.x + translation.x, y: initialCenter.y + translation.y)
+            print("The new Center is -> X: \(newCenter.x), Y:\(newCenter.y)")
             gesturesView?.center = newCenter
         } else {
             gesturesView?.center = initialCenter
@@ -128,7 +129,20 @@ extension PanGestureViewController {
         // Reset View's Center
         UIView.animate(withDuration: 0.5) { [unowned self] in
             self.square.center = view.center
+            print("Square view center reseted")
         }
+    }
+    
+    // MARK: - Add Button
+    
+    func setupAddButton() {
+        let rightButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddButton))
+        navigationItem.rightBarButtonItem = rightButton
+    }
+    
+    @objc func didTapAddButton() {
+        let viewController = SwipeGestureViewController()
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
 }
