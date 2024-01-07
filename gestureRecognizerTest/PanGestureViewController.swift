@@ -13,12 +13,18 @@ class PanGestureViewController: UIViewController {
     let square = UIView()
     let indicationLabel = UILabel()
     let resetButton = UIButton()
+    var onApear: () -> Void = {}
     
     var initialCenter = CGPoint()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupController()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        onApear()
     }
     
     func setupController() {
@@ -63,7 +69,6 @@ extension PanGestureViewController {
         } else {
             gesturesView?.center = initialCenter
         }
-        
     }
 }
 

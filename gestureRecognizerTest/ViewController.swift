@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     let toggleSwitch = UISwitch()
     
     let indicationLabel = UILabel()
+    var onApear: () -> Void = {}
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,11 @@ class ViewController: UIViewController {
         square.addGestureRecognizer(doubleTapRecognizer)
         square.isUserInteractionEnabled = true
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        onApear()
     }
     
     
@@ -117,7 +123,6 @@ class ViewController: UIViewController {
     
     @objc func didTapAddButton() {
         let viewController = LongPressGestureViewController()
-        
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

@@ -14,7 +14,8 @@ class ScreenEdgePanGestureViewController: UIViewController {
     let indicationLabel = UILabel()
     let resultLabel = UILabel()
     let actionResult = UILabel()
-
+    var onApear: () -> Void = {}
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupController()
@@ -23,6 +24,11 @@ class ScreenEdgePanGestureViewController: UIViewController {
         setupResultLabel()
         setupActionResultLabel()
         setupAddButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        onApear()
     }
     
     func setupController() {
@@ -114,8 +120,8 @@ extension ScreenEdgePanGestureViewController {
     }
     
     @objc func didTapAddButton() {
-//        let viewController = UIViewController()
-//        navigationController?.pushViewController(viewController, animated: true)
+        let viewController = MultipleGesturesViewController()
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     // MARK: - Action Result

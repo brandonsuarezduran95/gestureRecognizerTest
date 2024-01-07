@@ -13,7 +13,8 @@ class SwipeGestureViewController: UIViewController {
     let indicationLabel = UILabel()
     let resultLabel = UILabel()
     let actionResult = UILabel()
-
+    var onApear: () -> Void = {}
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupController()
@@ -22,6 +23,11 @@ class SwipeGestureViewController: UIViewController {
         setupResultLabel()
         setupActionResultLabel()
         setupAddButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        onApear()
     }
     
     func setupController() {
@@ -94,7 +100,6 @@ extension SwipeGestureViewController {
             }
   
         }
-         
     }
     
     // MARK: - Indication Label

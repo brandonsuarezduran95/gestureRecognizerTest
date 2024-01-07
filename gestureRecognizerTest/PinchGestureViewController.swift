@@ -13,6 +13,7 @@ class PinchGestureViewController: UIViewController {
     let indicationLabel = UILabel()
     let resetButton = UIButton()
     var scale: CGFloat = 0.0
+    var onApear: () -> Void = {}
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +21,11 @@ class PinchGestureViewController: UIViewController {
         setupSquareView()
         setupLabel()
         setupButton()
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        onApear()
     }
     
     func setupViewController() {

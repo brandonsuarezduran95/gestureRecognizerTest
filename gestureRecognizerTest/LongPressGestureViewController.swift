@@ -14,6 +14,7 @@ class LongPressGestureViewController: UIViewController {
     lazy var editMenu = UIEditMenuInteraction(delegate: self)
     let resultLabel = UILabel()
     let actionResult = UILabel()
+    var onApear: () -> Void = {}
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,11 @@ class LongPressGestureViewController: UIViewController {
         setupResultLabel()
         setupActionResultLabel()
         setupAddButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        onApear()
     }
     
     func setupController() {

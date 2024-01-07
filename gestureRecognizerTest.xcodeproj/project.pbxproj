@@ -10,6 +10,8 @@
 		990E5D5C2B41BBF700487807 /* SwipeGestureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990E5D5B2B41BBF700487807 /* SwipeGestureViewController.swift */; };
 		990E5D5E2B44D2F700487807 /* RotationGestureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990E5D5D2B44D2F700487807 /* RotationGestureViewController.swift */; };
 		990E5D602B4505E700487807 /* ScreenEdgePanGestureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990E5D5F2B4505E700487807 /* ScreenEdgePanGestureViewController.swift */; };
+		990E5D622B45DD8400487807 /* MultipleGesturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990E5D612B45DD8400487807 /* MultipleGesturesViewController.swift */; };
+		990E5D642B45F55700487807 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990E5D632B45F55700487807 /* HomeViewController.swift */; };
 		99463B602B3C794C00FFD1D6 /* PanGestureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99463B5F2B3C794C00FFD1D6 /* PanGestureViewController.swift */; };
 		994F1AC22ADDD6F000C5F2A6 /* LongPressGestureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994F1AC12ADDD6F000C5F2A6 /* LongPressGestureViewController.swift */; };
 		994F1AE62AEB07F100C5F2A6 /* PinchGestureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994F1AE52AEB07F100C5F2A6 /* PinchGestureViewController.swift */; };
@@ -25,6 +27,8 @@
 		990E5D5B2B41BBF700487807 /* SwipeGestureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeGestureViewController.swift; sourceTree = "<group>"; };
 		990E5D5D2B44D2F700487807 /* RotationGestureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationGestureViewController.swift; sourceTree = "<group>"; };
 		990E5D5F2B4505E700487807 /* ScreenEdgePanGestureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenEdgePanGestureViewController.swift; sourceTree = "<group>"; };
+		990E5D612B45DD8400487807 /* MultipleGesturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleGesturesViewController.swift; sourceTree = "<group>"; };
+		990E5D632B45F55700487807 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		99463B5F2B3C794C00FFD1D6 /* PanGestureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanGestureViewController.swift; sourceTree = "<group>"; };
 		994F1AC12ADDD6F000C5F2A6 /* LongPressGestureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressGestureViewController.swift; sourceTree = "<group>"; };
 		994F1AE52AEB07F100C5F2A6 /* PinchGestureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchGestureViewController.swift; sourceTree = "<group>"; };
@@ -76,11 +80,13 @@
 				990E5D5B2B41BBF700487807 /* SwipeGestureViewController.swift */,
 				990E5D5D2B44D2F700487807 /* RotationGestureViewController.swift */,
 				990E5D5F2B4505E700487807 /* ScreenEdgePanGestureViewController.swift */,
+				990E5D612B45DD8400487807 /* MultipleGesturesViewController.swift */,
 				99463B5F2B3C794C00FFD1D6 /* PanGestureViewController.swift */,
 				99526E362AC9FE00005A3153 /* Main.storyboard */,
 				99526E392AC9FE02005A3153 /* Assets.xcassets */,
 				99526E3B2AC9FE02005A3153 /* LaunchScreen.storyboard */,
 				99526E3E2AC9FE02005A3153 /* Info.plist */,
+				990E5D632B45F55700487807 /* HomeViewController.swift */,
 			);
 			path = gestureRecognizerTest;
 			sourceTree = "<group>";
@@ -159,9 +165,11 @@
 				99526E352AC9FE00005A3153 /* ViewController.swift in Sources */,
 				994F1AE62AEB07F100C5F2A6 /* PinchGestureViewController.swift in Sources */,
 				990E5D5C2B41BBF700487807 /* SwipeGestureViewController.swift in Sources */,
+				990E5D622B45DD8400487807 /* MultipleGesturesViewController.swift in Sources */,
 				99526E312AC9FE00005A3153 /* AppDelegate.swift in Sources */,
 				990E5D5E2B44D2F700487807 /* RotationGestureViewController.swift in Sources */,
 				994F1AC22ADDD6F000C5F2A6 /* LongPressGestureViewController.swift in Sources */,
+				990E5D642B45F55700487807 /* HomeViewController.swift in Sources */,
 				990E5D602B4505E700487807 /* ScreenEdgePanGestureViewController.swift in Sources */,
 				99463B602B3C794C00FFD1D6 /* PanGestureViewController.swift in Sources */,
 				99526E332AC9FE00005A3153 /* SceneDelegate.swift in Sources */,

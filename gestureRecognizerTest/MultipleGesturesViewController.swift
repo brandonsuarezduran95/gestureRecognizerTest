@@ -1,23 +1,30 @@
 //
-//  RotationGestureViewController.swift
+//  MultipleGesturesViewController.swift
 //  gestureRecognizerTest
 //
-//  Created by Brandon Suarez on 1/2/24.
+//  Created by Brandon Suarez on 1/3/24.
 //
 
 import UIKit
 
-
-class RotationGestureViewController: UIViewController {
+class MultipleGesturesViewController: UIViewController {
     
     let square = UIView()
     let indicationLabel = UILabel()
     let resultLabel = UILabel()
     let actionResult = UILabel()
     let resetButton = UIButton()
-    var rotation: CGFloat = 0.0
     var onApear: () -> Void = {}
     
+    // Gestures
+    lazy var swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_ :)))
+    lazy var swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_ :)))
+    lazy var swipeDownGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_ :)))
+    lazy var swipeUpGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_ :)))
+    
+    lazy var panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_ :)))
+    var initialCenter = CGPoint()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupController()
@@ -36,42 +43,92 @@ class RotationGestureViewController: UIViewController {
     
     func setupController() {
         view.backgroundColor = .white
-        title = "Rotation Gesture"
+        title = "Multiple Gestures"
+        panGesture.delegate = self
     }
 }
 
 
-extension RotationGestureViewController {
+extension MultipleGesturesViewController {
     // MARK: - Square View
     func setupSquareView() {
         square.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
         square.center = view.center
         square.layer.cornerRadius = 10
-        square.backgroundColor = .systemBrown
+        square.backgroundColor = .systemGray
         
-        let gesture = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation))
         // gesture Recognizer
         square.isUserInteractionEnabled = true
-        square.addGestureRecognizer(gesture)
+        
+        // Pan Gesture
+        square.addGestureRecognizer(panGesture)
+        
+        // Swipe Gesture
+        swipeRightGesture.direction = .right
+        swipeLeftGesture.direction = .left
+        swipeUpGesture.direction = .up
+        swipeDownGesture.direction = .down
+        
+        square.addGestureRecognizer(swipeRightGesture)
+        square.addGestureRecognizer(swipeLeftGesture)
+        square.addGestureRecognizer(swipeUpGesture)
+        square.addGestureRecognizer(swipeDownGesture)
+        
         view.addSubview(square)
         
     }
     
-    @objc func handleRotation(_ gestureRecognizer: UIRotationGestureRecognizer) {
+    @objc func handlePanGesture(_ gestureRecognizer: UIPanGestureRecognizer) {
         guard gestureRecognizer.view != nil else { return }
+        let gesturesView = gestureRecognizer.view
+        let translation = gestureRecognizer.translation(in: gesturesView?.superview)
         
-        if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
-            actionResult.text = "\(gestureRecognizer.rotation)"
-            self.rotation = gestureRecognizer.rotation
-           gestureRecognizer.view?.transform = gestureRecognizer.view!.transform.rotated(by: gestureRecognizer.rotation)
-           gestureRecognizer.rotation = 0
+        if gestureRecognizer.state == .began {
+            initialCenter = gesturesView!.center
+        }
+        
+        if gestureRecognizer.state != .cancelled {
+            let newCenter = CGPoint(x: initialCenter.x + translation.x, y: initialCenter.y + translation.y)
+            print("The new Center is -> X: \(newCenter.x), Y:\(newCenter.y)")
+            gesturesView?.center = newCenter
+        } else {
+            gesturesView?.center = initialCenter
+        }
+    }
+    
+    @objc func handleSwipeGesture(_ gestureRecognizer: UISwipeGestureRecognizer) {
+        let changeColor: (UIColor) -> Void = { [unowned self] color in
+            UIView.animate(withDuration: 0.5) {
+                self.square.backgroundColor = color
+            }
+        }
+        if gestureRecognizer.state == .ended {
+            square.layer.borderColor = UIColor.white.cgColor
+            
+            switch gestureRecognizer.direction {
+            case .up:
+                actionResult.text = "Swiped Up"
+                changeColor(.systemIndigo)
+            case .down:
+                actionResult.text = "Swiped Down"
+                changeColor(.systemRed)
+            case .left:
+                actionResult.text = "Swiped Left"
+                changeColor(.systemGreen)
+            case .right:
+                actionResult.text = "Swiped Right"
+                changeColor(.systemYellow)
+            default:
+                break
+            }
+  
         }
     }
     
     // MARK: - Indication Label
     func setupLabel() {
         indicationLabel.font = .systemFont(ofSize: 16, weight: .regular)
-        indicationLabel.text = "Use two fingers to rotate the view."
+        indicationLabel.text = "Pan and Swipe Gestures are attached to the square view, the Swipe gesture is the priority, swipe to the sides to change colors, hold press, and then drag to move the square."
         indicationLabel.numberOfLines = 4
         
         view.addSubview(indicationLabel)
@@ -89,7 +146,7 @@ extension RotationGestureViewController {
     
     func setupResultLabel() {
         resultLabel.font = .systemFont(ofSize: 16, weight: .bold)
-        resultLabel.text = "Result of Rotation."
+        resultLabel.text = "Result of Action."
         resultLabel.numberOfLines = 1
         
         view.addSubview(resultLabel)
@@ -111,8 +168,8 @@ extension RotationGestureViewController {
     }
     
     @objc func didTapAddButton() {
-        let viewController = ScreenEdgePanGestureViewController()
-        navigationController?.pushViewController(viewController, animated: true)
+//        let viewController = ScreenEdgePanGestureViewController()
+//        navigationController?.pushViewController(viewController, animated: true) 
     }
     
     // MARK: - Action Result
@@ -135,7 +192,7 @@ extension RotationGestureViewController {
     }
 }
 
-extension RotationGestureViewController {
+extension MultipleGesturesViewController {
     
     func setupButton() {
         
@@ -170,9 +227,21 @@ extension RotationGestureViewController {
         
         // Reset View's Rotation.
         UIView.animate(withDuration: 0.5) { [unowned self] in
-            self.square.transform = CGAffineTransform.identity.rotated(by: rotation)
-            print("Square centered")
+            self.square.center = view.center
+            print("Square view center reseted")
         }
+    }
+    
+}
+
+extension MultipleGesturesViewController: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        if gestureRecognizer == self.panGesture && (otherGestureRecognizer == self.swipeUpGesture || otherGestureRecognizer == self.swipeDownGesture || otherGestureRecognizer == self.swipeLeftGesture || otherGestureRecognizer == self.swipeRightGesture) {
+            return true
+        }
+        
+        return false
     }
     
 }
